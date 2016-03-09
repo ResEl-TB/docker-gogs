@@ -1,6 +1,6 @@
 gogs:
   container_name: gogs
-  build: .
+  build: ./custom
 # image: resel-tb/gogs
 # image: gogs/gogs
   restart: always
