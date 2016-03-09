@@ -1,0 +1,30 @@
+gogs:
+  container_name: gogs
+  build: .
+# image: resel-tb/gogs
+# image: gogs/gogs
+  restart: always
+  links:
+    - db
+  ports:
+    - "42:22"
+    - "80:3000"
+  volumes:
+    - /home/gogs/instance:/data
+  environment:
+    - HTTP_PROXY="http://172.22.2.24:3128/"
+    - HTTPS_PROXY="http://172.22.2.24:3128/"
+  dns:
+    - 172.22.2.230
+    - 172.23.2.229
+db:
+  container_name: gogs-db
+  image: mariadb
+  restart: always
+  environment:
+    - MYSQL_ROOT_PASSWORD=root@db
+    - MYSQL_DATABASE=gogs
+    - MYSQL_USER=gogs
+    - MYSQL_PASSWORD=gogs@db
+  volumes:
+    - /home/gogs/mysql:/var/lib/mysql
