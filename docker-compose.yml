@@ -15,7 +15,7 @@ gogs:
     - HTTP_PROXY="http://172.22.2.24:3128/"
     - HTTPS_PROXY="http://172.22.2.24:3128/"
   dns:
-    - 172.22.2.230
+    - 172.22.2.229
     - 172.23.2.229
 db:
   container_name: gogs-db
